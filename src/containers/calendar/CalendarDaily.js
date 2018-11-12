@@ -12,18 +12,12 @@ class CalendarDaily extends Component {
   renderDay() {
     let tdClassName = "text-center";
     if (this.props.date) {
-      const find = this.props.markedDays.find(
-        markedDay => markedDay.date === this.props.date
-      );
+      const find = this.props.markedDays.find(markedDay => markedDay.date === this.props.date);
       if (find) tdClassName = `${find.bg} text-center"`;
     }
     return (
-      <td
-        onClick={() => this.props.openModal(true, this.props.date)}
-        className={tdClassName}
-      >
-        {" "}
-        {this.props.day}{" "}
+      <td onClick={() => this.props.openModal(true, this.props.date)} className={tdClassName}>
+        {this.props.day}
       </td>
     );
   }
