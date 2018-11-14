@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import yearlyCalendar from "./yearly";
-import markedDays from "./daily";
+import yearData from "./year";
+import markedDays from "./day";
 import modal from "./modal";
 
-const rootReducer = combineReducers({ yearlyCalendar, markedDays, modal });
+const rootReducer = combineReducers({ yearData, markedDays, modal });
 
 export default rootReducer;

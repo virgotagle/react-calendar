@@ -1,9 +1,9 @@
-import { FETCH_YEARLY_CALENDAR } from "../actions";
+import * as types from "./../constants/Calendar";
 import { processDates } from "./process_dates";
 
 export default (state = [], action) => {
   switch (action.type) {
-    case FETCH_YEARLY_CALENDAR:
+    case types.SET_YEAR_DATA:
       return processDates(action.year);
   }
   return state;

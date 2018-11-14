@@ -1,39 +1,28 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { openModal } from "./../../actions/index";
+import { setModalIsOpen } from "./../../actions/index";
+import * as types from "./../../constants/Calendar";
 
-class CalendarDaily extends Component {
-  constructor(props) {
-    super(props);
-    this.renderDay = this.renderDay.bind(this);
+const CalendarDaily = ({ date, day, setModalIsOpen, markedDays }) => {
+  let tdClassName = types.DAY_CLASSNAME;
+  if (date) {
+    const find = markedDays.find(markedDay => markedDay.date === date);
+    if (find) tdClassName = find.className;
   }
 
-  renderDay() {
-    let tdClassName = "text-center";
-    if (this.props.date) {
-      const find = this.props.markedDays.find(markedDay => markedDay.date === this.props.date);
-      if (find) tdClassName = `${find.bg} text-center"`;
-    }
-    return (
-      <td onClick={() => this.props.openModal(true, this.props.date)} className={tdClassName}>
-        {this.props.day}
-      </td>
-    );
-  }
+  const openModal = () => setModalIsOpen(true, date);
 
-  render() {
-    return this.renderDay();
-  }
-}
-
-const mapStateToProps = ({ markedDays }) => {
-  return { markedDays };
+  return (
+    <td style={{ cursor: "pointer" }} onClick={openModal} className={tdClassName}>
+      {day}
+    </td>
+  );
 };
 
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ openModal }, dispatch);
-};
+const mapStateToProps = ({ markedDays }) => ({ markedDays });
+
+const mapDispatchToProps = dispatch => bindActionCreators({ setModalIsOpen }, dispatch);
 
 export default connect(
   mapStateToProps,

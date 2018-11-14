@@ -1,8 +1,7 @@
-import { OPEN_MODAL } from "../actions";
-
+import * as types from "./../constants/Calendar";
 export default (state = [], action) => {
   switch (action.type) {
-    case OPEN_MODAL:
+    case types.SET_MODAL_IS_OPEN:
       return action;
   }
   return state;

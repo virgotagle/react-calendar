@@ -1,20 +1,17 @@
-export const FETCH_YEARLY_CALENDAR = "FETCH_YEARLY_CALENDAR";
-export const FETCH_MARKED_DAYS = "FETCH_MARKED_DAYS";
-export const REMOVE_MARKED_DAYS = "REMOVE_MARKED_DAYS";
-export const OPEN_MODAL = "OPEN_MODAL";
+import * as types from "./../constants/Calendar";
 
-export const setYearlyCalendar = year => {
-  return { type: FETCH_YEARLY_CALENDAR, year };
+export const setYearData = year => {
+  return { type: types.SET_YEAR_DATA, year };
 };
 
-export const sethMarkDay = (date, bg) => {
-  return { type: FETCH_MARKED_DAYS, date, bg };
+export const setMarkedDay = (date, className) => {
+  return { type: types.SET_MARKED_DAY, date, className };
 };
 
-export const removeMarkDay = date => {
-  return { type: REMOVE_MARKED_DAYS, date };
+export const removeMarkedDay = date => {
+  return { type: types.REMOVE_MARKED_DAY, date };
 };
 
-export const openModal = (show, date) => {
-  return { type: OPEN_MODAL, show, date };
+export const setModalIsOpen = (isOpen, date) => {
+  return { type: types.SET_MODAL_IS_OPEN, isOpen, date };
 };
